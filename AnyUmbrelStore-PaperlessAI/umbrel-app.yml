@@ -1,4 +1,4 @@
-manifestVersion: 1
+manifestVersion: 1.0.1
 id: AnyUmbrelStore-PaperlessAI
 name: Paperless-AI
 tagline: An automated document analyzer for Paperless-ngx using OpenAI API
@@ -19,7 +19,7 @@ support: https://github.com/getumbrel/umbrel-hello-world-app/issues
 gallery:
   - https://private-user-images.githubusercontent.com/32274973/411330562-1fc9f470-6e45-43e0-a212-b8fa6225e8dd.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDA3Njg0NTQsIm5iZiI6MTc0MDc2ODE1NCwicGF0aCI6Ii8zMjI3NDk3My80MTEzMzA1NjItMWZjOWY0NzAtNmU0NS00M2UwLWEyMTItYjhmYTYyMjVlOGRkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjI4VDE4NDIzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWNjYjFhOTg1NGJiMWIyMjk1OWRlZmM1OTA0OTc0M2JmNDY0MDQzZTQ2YThkN2U3NDc1OWViNTQ0YjA1NzM1YmImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.fVpPykQQyWJ1GsfpkvtySg_dhPklG_Z76_TBUvsYlPY
 releaseNotes: >-
-  Add what's new in the latest version of your app here.
+  Updated Repo URL
 dependencies: []
 path: ""
 defaultUsername: ""
