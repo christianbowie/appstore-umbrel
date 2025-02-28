@@ -1,16 +1,14 @@
 manifestVersion: 1
-id: sparkles-hello-world
-name: Hello World
-tagline: Replace this tagline with your app's tagline
+id: AnyUmbrelStore-PaperlessAI
+name: Paperless-AI
+tagline: An automated document analyzer for Paperless-ngx using OpenAI API
 icon: https://svgur.com/i/mvA.svg
 category: Development
 version: "1.0.0"
 port: 4000
 description: >-
-  Add your app's description here.
-
-
-  You can also add newlines!
+  An automated document analyzer for Paperless-ngx using OpenAI API, Ollama and all OpenAI API compatible Services to automatically analyze and tag your documents.
+  It features: Automode, Manual Mode, Ollama and OpenAI, a Chat function to query your documents with AI, a modern and intuitive Webinterface. 
 
 developer: Umbrel
 website: https://umbrel.com
