@@ -4,9 +4,10 @@ services:
   app_proxy:
     environment:
       # The format here is: <app-id>_<docker-service-name>_1
-      APP_HOST: anyumbrelstore-paperlessai_paperless-ai_1
+      APP_HOST: anyumbrelstore-paperlessai_paperlessai_1
       APP_PORT: 3000
-  paperless-ai:
+  
+  paperlessai:
     image: clusterzx/paperless-ai:2.6.7
     container_name: paperless-ai
     restart: on-failure
