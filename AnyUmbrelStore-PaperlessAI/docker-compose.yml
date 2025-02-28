@@ -7,7 +7,7 @@ services:
       APP_HOST: AnyUmbrelStore-PaperlessAI_paperless-ai_1
       APP_PORT: 3000
   paperless-ai:
-    image: cclusterzx/paperless-ai:2.6.7
+    image: clusterzx/paperless-ai:2.6.7
     container_name: paperless-ai
     restart: on-failure
     cap_drop:
