@@ -1,11 +1,11 @@
-manifestVersion: 1.0.1
-id: AnyUmbrelStore-PaperlessAI
+manifestVersion: 1.0.2
+id: anyumbrelstore-paperlessai
 name: Paperless-AI
 tagline: An automated document analyzer for Paperless-ngx using OpenAI API
 icon: https://avatars.githubusercontent.com/u/32274973?s=48&v=4
 category: Development
-version: "1.0.1"
-port: 4000
+version: "1.0.2"
+port: 3000
 description: >-
   An automated document analyzer for Paperless-ngx using OpenAI API, Ollama and all OpenAI API compatible Services to automatically analyze and tag your documents.
   It features: Automode, Manual Mode, Ollama and OpenAI, a Chat function to query your documents with AI, a modern and intuitive Webinterface. 
