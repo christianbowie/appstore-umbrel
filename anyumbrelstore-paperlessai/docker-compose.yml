@@ -1,7 +1,7 @@
-version: 2.7.1
+version: 2.7.4
 services:
   paperlessai:
-    image: clusterzx/paperless-ai:2.7.1
+    image: clusterzx/paperless-ai:2.7.4
     container_name: paperless-ai
     restart: on-failure
     cap_drop:
