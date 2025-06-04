@@ -1,25 +1,26 @@
-manifestVersion: 3.0.4.1
-id: anyumbrelstore-paperlessai
-name: Paperless-AI
-tagline: An automated document analyzer for Paperless-ngx using OpenAI API
-icon: https://avatars.githubusercontent.com/u/32274973?s=48&v=4
-category: Development
-version: "3.0.4.1"
-port: 3000
+manifestVersion: 1
+id: paperless-ai
+name: Paperless AI
+tagline: The most advanced AI companion for Paperless-NGX. Transform your document management with powerful AI-driven automation and insights.
+icon: https://clusterzx.github.io/paperless-ai/ppai_icon.png
+category: AI
+version: "1.0.0"
+port: 4000
 description: >-
-  An automated document analyzer for Paperless-ngx using OpenAI API, Ollama and all OpenAI API compatible Services to automatically analyze and tag your documents.
-  It features: Automode, Manual Mode, Ollama and OpenAI, a Chat function to query your documents with AI, a modern and intuitive Webinterface. 
-
-developer: Clustercz
-website: https://github.com/clusterzx/paperless-ai
-submitter: DemianosHB
-submission: https://github.com/getumbrel/umbrel-hello-world-app
+  Paperless-AI is an automated document analyzer for Paperless-ngx that uses OpenAI API, Ollama, and other compatible services to automatically analyze and tag documents.
+developer: clusterzx
+website: https://clusterzx.github.io
+submitter: Christian Bowie
+submission: https://github.com/christianbowie/appstore-umbre
 repo: https://github.com/clusterzx/paperless-ai
-support: https://github.com/getumbrel/umbrel-hello-world-app/issues
+support: https://github.com/clusterzx/paperless-ai/issues
 gallery:
-  - https://private-user-images.githubusercontent.com/32274973/411330562-1fc9f470-6e45-43e0-a212-b8fa6225e8dd.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDA3Njg0NTQsIm5iZiI6MTc0MDc2ODE1NCwicGF0aCI6Ii8zMjI3NDk3My80MTEzMzA1NjItMWZjOWY0NzAtNmU0NS00M2UwLWEyMTItYjhmYTYyMjVlOGRkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjI4VDE4NDIzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWNjYjFhOTg1NGJiMWIyMjk1OWRlZmM1OTA0OTc0M2JmNDY0MDQzZTQ2YThkN2U3NDc1OWViNTQ0YjA1NzM1YmImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.fVpPykQQyWJ1GsfpkvtySg_dhPklG_Z76_TBUvsYlPY
+  - https://clusterzx.github.io/paperless-ai/playground.png
+  - https://clusterzx.github.io/paperless-ai/history.png
+  - https://clusterzx.github.io/paperless-ai/settings.png
+  - https://clusterzx.github.io/paperless-ai/chat.png
 releaseNotes: >-
-    Updated to 3.0.4
+  Increase stability RAG process, use already indexed data instead of doing a re-index at every startup. Reducing the time by 95% to start.
 dependencies: []
 path: ""
 defaultUsername: ""
