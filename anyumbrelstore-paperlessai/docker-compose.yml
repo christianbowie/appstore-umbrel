@@ -1,4 +1,11 @@
+version: "3.7"
+
 services:
+  app_proxy:
+    environment:
+      APP_HOST: paperless-ai
+      APP_PORT: 4000
+      
   paperlessai:
     image: clusterzx/paperless-ai:latest
     container_name: paperless-ai
