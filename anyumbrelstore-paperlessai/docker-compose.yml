@@ -1,4 +1,3 @@
-version: 3.0.4.1
 services:
   paperlessai:
     image: clusterzx/paperless-ai:3.0.4
