@@ -5,7 +5,7 @@ services:
     environment:
       APP_HOST: paperless-ai # This should match the service name of your app below
       APP_PORT: 4000      # This matches the internal port of paperlessai service
-      
+      PROXY_AUTH_ADD: 'false'
   paperlessai:
     image: clusterzx/paperless-ai:latest
     container_name: paperless-ai 
@@ -18,15 +18,15 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - PAPERLESS_AI_PORT=${PAPERLESS_AI_PORT:-4000} # Internal port for the app
-      - RAG_SERVICE_URL=http://localhost:4001 # Internal communication for Paperless-AI
-      - RAG_SERVICE_ENABLED=true
+      #- PAPERLESS_AI_PORT=${PAPERLESS_AI_PORT:-4000} # Internal port for the app
+      #- RAG_SERVICE_URL=http://localhost:4001 # Internal communication for Paperless-AI
+      #- RAG_SERVICE_ENABLED=true
       
       # ---- ADDED: Environment variables for Paperless-NGX Connection ----
       # !!! IMPORTANT: Verify these variable names (PAPERLESS_URL, PAPERLESS_API_TOKEN) 
       # with the clusterzx/paperless-ai documentation !!!
-      - PAPERLESS_URL=http://paperless_webserver_1:8000 # Based on your Paperless-NGX docker-compose.yml
-      - PAPERLESS_API_TOKEN=YOUR_ACTUAL_PAPERLESS_NGX_API_TOKEN # Replace with your token from Paperless-NGX
+      #- PAPERLESS_URL=http://paperless_webserver_1:8000 # Based on your Paperless-NGX docker-compose.yml
+      #- PAPERLESS_API_TOKEN=YOUR_ACTUAL_PAPERLESS_NGX_API_TOKEN # Replace with your token from Paperless-NGX
       
     # ports: # <-- COMMENTED OUT/REMOVED: Umbrel's app_proxy handles exposure. Explicit mapping is usually not needed.
     #   - 3000:${PAPERLESS_AI_PORT:-4000} 
