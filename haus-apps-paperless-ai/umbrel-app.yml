@@ -1,5 +1,5 @@
 manifestVersion: 1
-id: haus-apps-paperless-ai # <-- CORRECTED: Prefixed with your app store ID
+id: haus-paperless-ai # <-- CORRECTED: Prefixed with your app store ID
 name: Paperless AI
 tagline: The most advanced AI companion for Paperless-NGX. Transform your document management with powerful AI-driven automation and insights.
 icon: https://clusterzx.github.io/paperless-ai/ppai_icon.png
