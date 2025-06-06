@@ -1,12 +1,20 @@
 manifestVersion: 1
-id: haus-zigbee2mqtt
+id: zigbee2mqtt
 name: Zigbee2MQTT
 tagline: Zigbee to MQTT bridge, get rid of your proprietary Zigbee bridges
 icon: https://www.zigbee2mqtt.io/logo.png
 category: Development
 version: "0.2.0"
 port: 8089
-description: Zigbee2MQTT is licensed under the free GNU General Public License 3.
+description: |
+  **Compatible**
+  Zigbee2MQTT supports various Zigbee adapters and a large number of devices.
+
+  **Integrations**
+  Zigbee2MQTT integrates well with most home automation solutions because it uses MQTT.
+
+  **Open Source**
+  Zigbee2MQTT is licensed under the free GNU General Public License 3.
 developer: Koen Kanters
 website: https://www.zigbee2mqtt.io
 submitter: Wagner de Melo Reck
@@ -17,7 +25,7 @@ gallery:
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
-releaseNotes: First release of docker image
+releaseNotes: First release of the Docker image
 dependencies: []
 path: ""
 defaultUsername: ""
