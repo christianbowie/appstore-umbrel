@@ -18,7 +18,8 @@ gallery:
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
-releaseNotes: First release of the Docker image
+releaseNotes: >- 
+ First release of the Docker image
 dependencies: []
 path: ""
 defaultUsername: ""
