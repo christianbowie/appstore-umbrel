@@ -6,7 +6,8 @@ icon: https://www.zigbee2mqtt.io/logo.png
 category: Development
 version: "0.2.0"
 port: 8089
-description: Zigbee2MQTT supports various Zigbee adapters and a large number of devices.
+description: >-
+ Zigbee2MQTT supports various Zigbee adapters and a large number of devices.
 developer: Koen Kanters
 website: https://www.zigbee2mqtt.io
 submitter: Christian Bowie
