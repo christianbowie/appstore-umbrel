@@ -8,7 +8,7 @@ services:
       # The service name of the app to proxy to (must match the container_name below)
       APP_HOST: zigbee2mqtt_app_1
       # The internal port the app's web UI is running on
-      APP_PORT: 8080
+      APP_PORT: 8089
 
   zigbee2mqtt:
     image: koenkk/zigbee2mqtt:latest
