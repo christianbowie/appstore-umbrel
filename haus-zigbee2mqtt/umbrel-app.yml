@@ -6,7 +6,7 @@ icon: https://www.zigbee2mqtt.io/logo.png
 category: Development
 version: "0.2.0"
 port: 8089
-description: Zigbee2MQTT is licenced under the free GNU General Public License 3.
+description: Zigbee2MQTT is licensed under the free GNU General Public License 3.
 developer: Koen Kanters
 website: https://www.zigbee2mqtt.io
 submitter: Wagner de Melo Reck
@@ -17,8 +17,7 @@ gallery:
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
-releaseNotes: >-
-  First release of docker image
+releaseNotes: First release of docker image
 dependencies: []
 path: ""
 defaultUsername: ""
