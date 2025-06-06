@@ -4,7 +4,7 @@ services:
   app_proxy:
     environment:
       APP_HOST: paperless-ai # This should match the service name of your app below
-      APP_PORT: 4000      # This matches the internal port of paperlessai service
+      APP_PORT: 3000      # This matches the internal port of paperlessai service
       PROXY_AUTH_ADD: 'false'
   paperlessai:
     image: clusterzx/paperless-ai:latest
