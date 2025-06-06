@@ -1,23 +1,15 @@
 services:
   app_proxy:
-    # Corrected the image name to the official Umbrel app proxy
-    image: getumbrel/umbrel-app-proxy:v2.0.0
-    container_name: zigbee2mqtt_app_proxy_1
-    restart: on-failure
     environment:
-      # The service name of the app to proxy to (must match the container_name below)
-      APP_HOST: zigbee2mqtt_app_1
-      # The internal port the app's web UI is running on
-      APP_PORT: 8089
-
+      APP_HOST: zigbee2mqtt # This should match the service name of your app below
+      APP_PORT: 8089      # This matches the internal port of paperlessai service
   zigbee2mqtt:
     image: koenkk/zigbee2mqtt:latest
-    container_name: zigbee2mqtt_app_1
+    container_name: zigbee2mqtt
     restart: unless-stopped
     privileged: true
     volumes:
       - ${APP_DATA_DIR}/data:/app/data
-      - /run/udev:/run/udev:ro
     # !! IMPORTANT !!
     # You MUST update the device path below to match your Zigbee adapter.
     # To find the path, run 'ls -l /dev/serial/by-id/' on your Umbrel device's command line.
