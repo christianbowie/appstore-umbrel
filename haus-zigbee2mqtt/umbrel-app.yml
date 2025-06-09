@@ -1,26 +1,30 @@
-manifestVersion: 1
-id: haus-zigbee2mqtt
+manifestVersion: 1.1
+id: zigbee2mqtt
+category: automation
 name: Zigbee2MQTT
-tagline: Zigbee to MQTT bridge, get rid of your proprietary Zigbee bridges
-icon: https://www.zigbee2mqtt.io/logo.png
-category: Development
-version: "0.2.0"
-port: 8089
+version: "1.34.0"
+tagline: Zigbee to MQTT bridge
 description: >-
- Zigbee2MQTT supports various Zigbee adapters and a large number of devices.
+  Zigbee2MQTT allows you to use your Zigbee devices without the vendor's bridge or gateway.
+  
+  It bridges events and allows you to control your Zigbee devices via MQTT. In this way you can integrate your Zigbee devices with whatever smart home infrastructure you are using.
+
 developer: Koen Kanters
-website: https://www.zigbee2mqtt.io
-submitter: Christian Bowie
-submission: https://github.com/wiglot/umbrel-zigbee2mqtt
-repo: https://github.com/wiglot/umbrel-zigbee2mqtt
-support: https://github.com/wiglot/umbrel-zigbee2mqtt/issues
-gallery:
-  - https://i.imgur.com/yyVG0Jb.jpeg
-  - https://i.imgur.com/yyVG0Jb.jpeg
-  - https://i.imgur.com/yyVG0Jb.jpeg
-releaseNotes: >- 
- First release of the Docker image
+website: https://www.zigbee2mqtt.io/
 dependencies: []
+repo: https://github.com/Koenkk/zigbee2mqtt
+support: https://github.com/Koenkk/zigbee2mqtt/issues
+port: 8080
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
 path: ""
 defaultUsername: ""
 defaultPassword: ""
+releaseNotes: >-
+  This release includes the latest Zigbee2MQTT features and bug fixes.
+  Please ensure your Zigbee USB adapter is properly connected before starting.
+
+submitter: Christian Bowie
+submission: https://github.com/christianbowie/appstore-umbrel
