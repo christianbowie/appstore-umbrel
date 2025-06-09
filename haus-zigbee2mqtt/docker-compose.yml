@@ -1,4 +1,29 @@
 services:
+      app_proxy:
+        environment:
+          APP_HOST: zigbee2mqtt # This should match the service name of your app below
+          APP_PORT: 8089      # This matches the internal port of paperlessai service
+      zigbee2mqtt:
+        container_name: zigbee2mqtt
+        image: ghcr.io/koenkk/zigbee2mqtt
+        restart: unless-stopped
+        container_name: zigbee2mqtt
+        privileged: true
+        volumes:
+            - ./data:/app/data
+            - /run/udev:/run/udev:ro
+        ports:
+            # Frontend port
+            - 8080:8080
+        environment:
+            - TZ=Austalia/Sydney
+        devices:
+            # Make sure this matched your adapter location
+            - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20230509182440-if00-port0:/dev/ttyACM0
+
+
+
+services:
   app_proxy:
     environment:
       APP_HOST: zigbee2mqtt # This should match the service name of your app below
