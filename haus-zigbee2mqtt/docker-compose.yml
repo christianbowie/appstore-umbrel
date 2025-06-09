@@ -1,42 +1,20 @@
 services:
-      app_proxy:
-        environment:
-          APP_HOST: zigbee2mqtt # This should match the service name of your app below
-          APP_PORT: 8089      # This matches the internal port of paperlessai service
-      zigbee2mqtt:
-        container_name: zigbee2mqtt
-        image: ghcr.io/koenkk/zigbee2mqtt
-        restart: unless-stopped
-        container_name: zigbee2mqtt
-        privileged: true
-        volumes:
-            - ./data:/app/data
-            - /run/udev:/run/udev:ro
-        ports:
-            # Frontend port
-            - 8080:8080
-        environment:
-            - TZ=Austalia/Sydney
-        devices:
-            # Make sure this matched your adapter location
-            - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20230509182440-if00-port0:/dev/ttyACM0
-
-
-
-services:
   app_proxy:
     environment:
-      APP_HOST: zigbee2mqtt # This should match the service name of your app below
-      APP_PORT: 8089      # This matches the internal port of paperlessai service
-  zigbee2mqtt:
-    image: koenkk/zigbee2mqtt:latest
-    container_name: zigbee2mqtt
-    restart: unless-stopped
-    privileged: true
+      APP_HOST: zigbee2mqtt_web_1
+      APP_PORT: 8080
+
+  web:
+    image: ghcr.io/koenkk/zigbee2mqtt:latest@sha256:latest
+    restart: on-failure
+    stop_grace_period: 1m
     volumes:
       - ${APP_DATA_DIR}/data:/app/data
-    # !! IMPORTANT !!
-    # You MUST update the device path below to match your Zigbee adapter.
-    # To find the path, run 'ls -l /dev/serial/by-id/' on your Umbrel device's command line.
+      - /run/udev:/run/udev:ro
+    environment:
+      TZ: Australia/Sydney
+      ZIGBEE2MQTT_DATA: /app/data
     devices:
+      # Update this path to match your Zigbee USB adapter
+      # Find your device with: ls -la /dev/serial/by-id/
       - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20230509182440-if00-port0:/dev/ttyACM0
