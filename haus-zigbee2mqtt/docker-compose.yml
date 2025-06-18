@@ -17,4 +17,4 @@ services:
     devices:
       # Update this path to match your Zigbee USB adapter
       # Find your device with: ls -la /dev/serial/by-id/
-      - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20230509182440-if00-port0:/dev/ttyACM0
+      - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20230509182440-if00:/dev/ttyACM0
