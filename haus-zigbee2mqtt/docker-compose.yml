@@ -1,19 +1,18 @@
 services:
+
   app_proxy:
     environment:
-      APP_HOST: web
-      APP_PORT: 9000
+      APP_HOST: zigbee2mqtt_app_1
+      APP_PORT: 8080
 
-  web:
-    image: ghcr.io/koenkk/zigbee2mqtt:latest
+  app:
+    image: koenkk/zigbee2mqtt:2.4.0@sha256:dd7479e5416c4b95725333d0a69ff504bcbda9a7a3431e5d5dd1e27c16465cdd
     restart: on-failure
-    stop_grace_period: 1m
     volumes:
-      - ${APP_DATA_DIR}/data:/app/data
+      - ${APP_DATA_DIR}/data:/app/data:rw
       - /run/udev:/run/udev:ro
+    privileged: true
     environment:
-      TZ: Australia/Sydney
-    devices:
-      # Update this path to match your Zigbee USB adapter
-      # Find your device with: ls -la /dev/serial/by-id/
-      - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20230509182440-if00:/dev/ttyACM0
+      ZIGBEE2MQTT_CONFIG_FRONTEND_ENABLED: "true"
+      ZIGBEE2MQTT_CONFIG_FRONTEND_PORT: 8080
+      Z2M_ONBOARD_NO_REDIRECT: 1
