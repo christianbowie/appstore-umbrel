@@ -1,5 +1,5 @@
 manifestVersion: 1.1
-id: zigbee2mqtt
+id: haus-zigbee2mqtt
 category: automation
 name: Zigbee2MQTT
 version: "1.34.0"
@@ -15,10 +15,6 @@ dependencies: []
 repo: https://github.com/Koenkk/zigbee2mqtt
 support: https://github.com/Koenkk/zigbee2mqtt/issues
 port: 8080
-gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
 path: ""
 defaultUsername: ""
 defaultPassword: ""
