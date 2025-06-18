@@ -14,7 +14,7 @@ website: https://www.zigbee2mqtt.io/
 dependencies: []
 repo: https://github.com/Koenkk/zigbee2mqtt
 support: https://github.com/Koenkk/zigbee2mqtt/issues
-port: 8080
+port: 9000
 path: ""
 defaultUsername: ""
 defaultPassword: ""
