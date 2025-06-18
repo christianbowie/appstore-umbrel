@@ -1,5 +1,5 @@
 manifestVersion: 1
-id: "zigbee2mqtt"
+id: "haus-zigbee2mqtt"
 name: "Zigbee2MQTT"
 tagline: "Zigbee to MQTT bridge, get rid of your proprietary Zigbee bridges"
 category: "automation"
