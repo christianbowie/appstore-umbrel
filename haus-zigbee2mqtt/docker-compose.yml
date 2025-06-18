@@ -13,7 +13,6 @@ services:
       - /run/udev:/run/udev:ro
     environment:
       TZ: Australia/Sydney
-      ZIGBEE2MQTT_DATA: /app/data
     devices:
       # Update this path to match your Zigbee USB adapter
       # Find your device with: ls -la /dev/serial/by-id/
