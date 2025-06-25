@@ -1,0 +1,43 @@
+# Umbrel App Configuration for Paperless-NGX
+manifestVersion: 1.1
+id: paperless-ngx
+category: productivity
+name: Paperless-NGX
+version: "2.12.1"
+tagline: A supercharged version of paperless with document AI
+description: >-
+  Transform your physical documents into a searchable online archive so you can keep, well, less paper.
+  
+  Paperless-NGX is a document management system that transforms your physical documents into a searchable online archive. It automatically organizes your documents using AI-powered features including:
+  
+  - Automatic OCR and text extraction
+  - Smart tagging and categorization  
+  - Document type detection
+  - Email integration
+  - Advanced search capabilities
+  - Mobile app support
+  - REST API for integrations
+  
+  This app includes AI enhancements through Ollama integration for improved document processing and classification.
+
+releaseNotes: >-
+  Initial Umbrel release of Paperless-NGX with AI capabilities
+  
+developer: Paperless-NGX Team
+website: https://docs.paperless-ngx.com/
+dependencies: []
+repo: https://github.com/paperless-ngx/paperless-ngx
+support: https://github.com/paperless-ngx/paperless-ngx/discussions
+port: 8020
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+permissions:
+  - STORAGE_DOWNLOADS
+submitter: Christian Bowie
+submission: https://github.com/getumbrel/umbrel-apps

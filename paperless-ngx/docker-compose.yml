@@ -1,0 +1,156 @@
+version: "3.8"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: paperless_server_1
+      APP_PORT: 8000
+      PROXY_AUTH_WHITELIST: "/api/*"
+
+  server:
+    image: ghcr.io/paperless-ngx/paperless-ngx:2.12.1@sha256:ef643d86008e80a7d6e38c0a8cd1dec6435ce9b7c66ec69ba29bb41e26bcc8ad
+    restart: on-failure
+    stop_grace_period: 30s
+    depends_on:
+      - db
+      - redis
+      - gotenberg
+      - tika
+    volumes:
+      - ${APP_DATA_DIR}/data:/usr/src/paperless/data
+      - ${APP_DATA_DIR}/media:/usr/src/paperless/media
+      - ${APP_DATA_DIR}/consume:/usr/src/paperless/consume
+      - ${APP_DATA_DIR}/export:/usr/src/paperless/export
+    environment:
+      USERMAP_UID: 1000
+      USERMAP_GID: 1000
+      PAPERLESS_REDIS: redis://redis:6379
+      PAPERLESS_DBENGINE: postgresql
+      PAPERLESS_DBHOST: db
+      PAPERLESS_DBPORT: 5432
+      PAPERLESS_DBNAME: paperless
+      PAPERLESS_DBUSER: paperless
+      PAPERLESS_DBPASS: ${APP_PASSWORD}
+      PAPERLESS_TIME_ZONE: ${TZ}
+      PAPERLESS_OCR_LANGUAGE: eng+fra+deu+spa
+      PAPERLESS_SECRET_KEY: ${APP_SEED}
+      PAPERLESS_TIKA_ENABLED: 1
+      PAPERLESS_TIKA_ENDPOINT: http://tika:9998
+      PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
+      PAPERLESS_TASK_WORKERS: 2
+      PAPERLESS_ENABLE_HTTP_REMOTE_USER: true
+      PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME: HTTP_REMOTE_USER
+      PAPERLESS_LOGOUT_REDIRECT_URL: /
+      PAPERLESS_URL: http://${DEVICE_DOMAIN_NAME}:${APP_PAPERLESS_NGX_PORT}
+      PAPERLESS_CSRF_TRUSTED_ORIGINS: http://${DEVICE_DOMAIN_NAME}:${APP_PAPERLESS_NGX_PORT},https://${DEVICE_DOMAIN_NAME}
+      PAPERLESS_ALLOWED_HOSTS: ${DEVICE_DOMAIN_NAME},localhost,server
+      PAPERLESS_CORS_ALLOWED_HOSTS: http://${DEVICE_DOMAIN_NAME}:${APP_PAPERLESS_NGX_PORT},https://${DEVICE_DOMAIN_NAME}
+      PAPERLESS_AUTO_LOGIN_USERNAME: ${DEVICE_HOSTNAME}
+      PAPERLESS_ADMIN_USER: ${DEVICE_HOSTNAME}
+      PAPERLESS_ADMIN_PASSWORD: ${APP_PASSWORD}
+      PAPERLESS_ADMIN_MAIL: admin@${DEVICE_DOMAIN_NAME}
+    networks:
+      - default
+
+  db:
+    image: postgres:16@sha256:d0f363f8366fbc3f52d172c6e76bc27151c3d643b870e1062b4e8bfe65baf609
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: ${APP_PASSWORD}
+    networks:
+      - default
+
+  redis:
+    image: redis:7@sha256:3134997edb04277814aa51a4175a588d45eb4299272f8eff2307bbf8b39e4d43
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/redis:/data
+    networks:
+      - default
+
+  gotenberg:
+    image: gotenberg/gotenberg:8.20@sha256:2d4e7e8a7e2d2e6e2d5e5f5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e
+    restart: on-failure
+    command:
+      - "gotenberg"
+      - "--chromium-disable-javascript=true"
+      - "--chromium-allow-list=file:///tmp/.*"
+      - "--chromium-disable-routes=true"
+    networks:
+      - default
+
+  tika:
+    image: apache/tika:2.9.2.1@sha256:3d8e6c8e4f5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e
+    restart: on-failure
+    networks:
+      - default
+
+  ollama:
+    image: ollama/ollama:0.3.12@sha256:d8c28c3b4c8e8c8e8c8e8c8e8c8e8c8e8c8e8c8e8c8e8c8e8c8e8c8e8c8e8c8e
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/ollama:/root/.ollama
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+    networks:
+      - default
+
+  paperless-ai:
+    image: clusterzx/paperless-ai:latest@sha256:5f5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e
+    restart: on-failure
+    depends_on:
+      - server
+      - ollama
+    environment:
+      PAPERLESS_AI_PORT: 3000
+      RAG_SERVICE_URL: http://server:8000
+      RAG_SERVICE_ENABLED: true
+    volumes:
+      - ${APP_DATA_DIR}/paperless-ai:/app/data
+    networks:
+      - default
+
+  paperless-gpt:
+    image: icereed/paperless-gpt:latest@sha256:7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g7g
+    restart: on-failure
+    depends_on:
+      - server
+      - ollama
+    environment:
+      PAPERLESS_BASE_URL: "http://server:8000"
+      PAPERLESS_API_TOKEN: "${PAPERLESS_API_TOKEN:-}"
+      LLM_PROVIDER: "ollama"
+      LLM_MODEL: "llama3.2"
+      OLLAMA_HOST: "http://ollama:11434"
+      TOKEN_LIMIT: 1000
+      OCR_PROVIDER: "llm"
+      VISION_LLM_PROVIDER: "ollama"
+      VISION_LLM_MODEL: "minicpm-v"
+      OCR_PROCESS_MODE: "image"
+      PDF_SKIP_EXISTING_OCR: "false"
+      CREATE_LOCAL_HOCR: "false"
+      LOCAL_HOCR_PATH: "/app/hocr"
+      CREATE_LOCAL_PDF: "false"
+      LOCAL_PDF_PATH: "/app/pdf"
+      PDF_UPLOAD: "false"
+      PDF_REPLACE: "false"
+      PDF_COPY_METADATA: "true"
+      PDF_OCR_TAGGING: "true"
+      OCR_LIMIT_PAGES: "0"
+      LOG_LEVEL: "info"
+      MANUAL_TAG: "paperless-gpt"
+      AUTO_TAG: "paperless-gpt-auto"
+      AUTO_OCR_TAG: "paperless-gpt-ocr-auto"
+      PDF_OCR_COMPLETE_TAG: "paperless-gpt-ocr-complete"
+      AUTO_GENERATE_TAGS: "true"
+      AUTO_GENERATE_TITLE: "true"
+    volumes:
+      - ${APP_DATA_DIR}/paperless-gpt/prompts:/app/prompts
+      - ${APP_DATA_DIR}/paperless-gpt/hocr:/app/hocr
+      - ${APP_DATA_DIR}/paperless-gpt/pdf:/app/pdf
+    networks:
+      - default
