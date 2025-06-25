@@ -4,7 +4,7 @@ name: Paperless AI
 tagline: The most advanced AI companion for Paperless-NGX. Transform your document management with powerful AI-driven automation and insights.
 icon: https://clusterzx.github.io/paperless-ai/ppai_icon.png
 category: AI
-version: "1.0.0"
+version: "3.0.7"
 port: 4000
 description: >-
   Paperless-AI is an automated document analyzer for Paperless-ngx that uses OpenAI API, Ollama, and other compatible services to automatically analyze and tag documents.
